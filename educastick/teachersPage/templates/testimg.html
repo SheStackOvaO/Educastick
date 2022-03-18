@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Test</title>
+</head>
+<body>
+<form action="" method="POST">
+{% csrf_token %}
+{{ form.as_p }}
+<input type="Submit" name="submit" value="Submit"/>
+</form>
+
+{% if submitbutton == "Submit" %}
+<h1>Your img is <img src="{{ img }}" alt=""></h1>
+{% endif %}
+</body>
+</html>

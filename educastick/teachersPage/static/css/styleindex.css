@@ -1,0 +1,28 @@
+.description{
+  display: grid;
+  padding: 0 7%;
+  grid-template-columns: minmax(auto, 1200px);
+  justify-content: start;
+}
+.description:nth-of-type(even){
+  justify-content: end;
+}
+.description_block{
+  border-bottom: 10px solid #222222;
+}
+.description:nth-last-child(-n+1) .description_block{
+  border-bottom: 0;
+}
+.description_image{
+  float: left;
+}
+.description_block img {
+  background-color: #222222;
+  width: 300px;
+}
+.description_block div {
+  margin: 50px;
+}
+.description:nth-of-type(even) .description_image{
+  float: right;
+}

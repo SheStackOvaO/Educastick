@@ -1,0 +1,55 @@
+header {
+  position: sticky;
+  top: 0;
+  height: 85px;
+  width: 100%;
+  z-index: 99;
+  background-color: #222222;
+  display: grid;
+  grid-column-gap: 20px;
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: 85px;
+
+}
+.abutt{
+  grid-column: 2 / 8;
+  align-self: center;
+  display: grid;
+  grid-gap: 20px;
+  grid-template-columns: repeat(4, 1fr);
+  justify-items: center;
+}
+.ava, .logo {
+  justify-self: center;
+  align-self: center;
+}
+header a {
+  text-decoration: none;
+  color: white;
+  font-size: 15pt;
+}
+
+#ava, #logo {
+  width: 60px;
+}
+
+#ava {
+  border: 2px solid white;
+  border-radius: 50%;
+}
+
+a:hover {
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+footer{
+  grid-area: footer;
+  background-color: #222222;
+}
+
+@media (max-width: 550px) {
+  header a {
+    font-size: 13pt;
+  }
+}
