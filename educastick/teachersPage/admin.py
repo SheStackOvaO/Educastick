@@ -4,7 +4,8 @@ from django.contrib import admin
 
 import math
 import datetime
-# import inspect
+import inspect
+
 from teachersPage import models
 
 
@@ -167,7 +168,7 @@ class ModuleAdmin(admin.ModelAdmin):
 
 
 class QuestionAdmin(admin.ModelAdmin):
-    list_display = ('get_number', 'get_description', 'get_correctAnswer', 'get_photo', 'get_test')
+    list_display = ('get_number', 'get_description', 'get_photo', 'get_test')
     list_display_links = ('get_test',)
 
     def get_number(self, obj):
@@ -175,9 +176,6 @@ class QuestionAdmin(admin.ModelAdmin):
 
     def get_description(self, obj):
         return obj.description
-
-    def get_correctAnswer(self, obj):
-        return obj.correctAnswer
 
     def get_photo(self, obj):
         return obj.photo
@@ -187,9 +185,25 @@ class QuestionAdmin(admin.ModelAdmin):
 
     get_number.short_description = 'Номер вопроса'
     get_description.short_description = 'Описание вопроса'
-    get_correctAnswer.short_description = 'Правильный ответ'
     get_photo.short_description = 'Фотография'
     get_test.short_description = 'Тест'
+
+
+class QuestionVariantAnswer(admin.ModelAdmin):
+    list_display = ('get_VariantAnswer', 'get_correctAnswer', 'get_question',)
+
+    def get_VariantAnswer(self, obj):
+        return obj.VariantAnswer
+
+    def get_correctAnswer(self, obj):
+        return obj.correctAnswer
+
+    def get_question(self, obj):
+        return obj.question
+
+    get_VariantAnswer.short_description = 'Вариант ответа'
+    get_correctAnswer.short_description = 'Правильный ответ'
+    get_question.short_description = 'Вопрос'
 
 
 class AnswerAdmin(admin.ModelAdmin):
@@ -237,3 +251,4 @@ admin.site.register(models.Variant, VariantAdmin)
 admin.site.register(models.Question, QuestionAdmin)
 admin.site.register(models.Answer, AnswerAdmin)
 admin.site.register(models.Module, ModuleAdmin)
+admin.site.register(models.QuestionVariantAnswer, QuestionVariantAnswer)

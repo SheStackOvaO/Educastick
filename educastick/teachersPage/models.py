@@ -93,12 +93,20 @@ class Variant(models.Model):
 class Question(models.Model):
     number = models.IntegerField()
     description = models.TextField()
-    correctAnswer = models.CharField(max_length=255)
-    photo = models.ImageField(upload_to="photosQuestions/%Y/%m/%d/")
+    photo = models.ImageField(upload_to="photosQuestions/%Y/%m/%d/", blank=True, null=True)
     test = models.ForeignKey(Test, on_delete=models.CASCADE)
 
     def __str__(self):
-        return ') '.join([self.number, self.description])
+        return self.description
+
+
+class QuestionVariantAnswer(models.Model):
+    VariantAnswer = models.TextField()
+    correctAnswer = models.BooleanField()
+    question = models.ForeignKey(Question, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return str(self.VariantAnswer)
 
 
 class Answer(models.Model):
