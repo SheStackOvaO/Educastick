@@ -89,12 +89,20 @@ class Variant(models.Model):
     def __str__(self):
         return str(self.number)
 
+class CheckQuestion(models.Model):
+    checkQ = models.TextField()
+    description = models.TextField()
+
+    def __str__(self):
+        return self.checkQ
+
 
 class Question(models.Model):
     number = models.IntegerField()
     description = models.TextField()
     photo = models.ImageField(upload_to="photosQuestions/%Y/%m/%d/", blank=True, null=True)
     test = models.ForeignKey(Test, on_delete=models.CASCADE)
+    checkQ = models.ForeignKey(CheckQuestion, on_delete=models.CASCADE, blank=True, null=True)
 
     def __str__(self):
         return self.description
