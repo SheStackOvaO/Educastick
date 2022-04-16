@@ -167,8 +167,23 @@ class ModuleAdmin(admin.ModelAdmin):
     get_subject.short_description = 'Предмет'
 
 
+class CheckQuestion(admin.ModelAdmin):
+    list_display = ('get_checkQ', 'get_description', )
+
+    def get_checkQ(self, obj):
+        return obj.checkQ
+
+    def get_description(self, obj):
+        return obj.description
+
+    get_checkQ.short_description = 'Вариант проверки'
+    get_description.short_description = 'Описание варианта проверки'
+
+
 class QuestionAdmin(admin.ModelAdmin):
-    list_display = ('get_number', 'get_description', 'get_photo', 'get_test')
+    list_display = ('get_number', 'get_description', 'get_photo', 'get_test', 'get_check',)
+
+    #list_display = ('get_number', 'get_description', 'get_photo', 'get_test',)
     list_display_links = ('get_test',)
 
     def get_number(self, obj):
@@ -183,10 +198,14 @@ class QuestionAdmin(admin.ModelAdmin):
     def get_test(self, obj):
         return obj.test
 
+    def get_check(self, obj):
+        return obj.checkQ
+
     get_number.short_description = 'Номер вопроса'
     get_description.short_description = 'Описание вопроса'
     get_photo.short_description = 'Фотография'
     get_test.short_description = 'Тест'
+    get_check.short_description = 'Вариант проверки'
 
 
 class QuestionVariantAnswer(admin.ModelAdmin):
@@ -248,6 +267,7 @@ admin.site.register(models.Student, StudentAdmin)
 
 admin.site.register(models.Test, TestAdmin)
 admin.site.register(models.Variant, VariantAdmin)
+admin.site.register(models.CheckQuestion, CheckQuestion)
 admin.site.register(models.Question, QuestionAdmin)
 admin.site.register(models.Answer, AnswerAdmin)
 admin.site.register(models.Module, ModuleAdmin)
