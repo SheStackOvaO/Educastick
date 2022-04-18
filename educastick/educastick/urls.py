@@ -26,6 +26,7 @@ urlpatterns = [
     path('', views.main),
     path('account/', views.account),
     path('test/', views.test),
+    path('statistic/', views.calcStatistic),
     path('add/', views.TypeGroupCreateView.as_view(), name='add'),
 ]
 
