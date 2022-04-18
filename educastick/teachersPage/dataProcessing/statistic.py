@@ -105,25 +105,27 @@ def notWrite(): #Список тех, кто не писал тест
     return "Список тех, кто не писал тест: " + str(int(len(answers)/len(students)))
 
 
-def quantityByDisassembly(request): # количество по разбаловке (распередение по полученным оценкам)
-
+def quantityByDisassembly(): # количество по разбаловке (распередение по полученным оценкам)
     # Добавить айди препода и группы и проверку относительно их
     answers = models.Answer.objects.all()
     teacher = models.Teacher.objects.get(pk=1)
-    students = models.Student.objects.all()
     unbalancing = teacher.unbalancing.split('/')
+    balancing = []
     markStud = [[] for i in range(0, len(unbalancing) + 1)]
     for answer in answers:
         for i in range(1, len(unbalancing)):
             if i != 1 and i != len(unbalancing):
+                balancing.append(unbalancing[i - 1] + '-' + unbalancing[i])
+                balancing.append(unbalancing[i - 2] + '-' + unbalancing[i-1])
                 if int(unbalancing[i - 1]) >= int(answer.score) > int(unbalancing[i - 2]):
                     markStud[i].append(answer.score)
             if i == len(unbalancing) - 1:
+                balancing.append( '>=' + unbalancing[i])
                 if int(answer.score) >= int(unbalancing[i]):
                     markStud[i + 1].append(answer.score)
             if i == 1:
+                balancing.append( '<' + unbalancing[i-1])
                 if int(unbalancing[0]) >= int(answer.score):
                     markStud[i-1].append(answer.score)
 
-    absolute = sum([(len(markStud[i])) for i in range(0, len(markStud))])*100/len(students)
-    return "количество по разбаловке (распередение по полученным оценкам): " + str(absolute)
+    return [sorted(set(balancing)), markStud] # dict(zip(markStud, set(balancing)))

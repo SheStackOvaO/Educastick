@@ -15,8 +15,9 @@ def calcStatistic(request):
     minScore = statistic.minScore()
     maxScore = statistic.maxScore()
     notWrite = statistic.notWrite()
+    quantityByDisassembly = statistic.quantityByDisassembly()
     context = {'count': abStatistic, 'quality': quality, 'avgStud': avgStud, 'minScore': minScore, 'maxScore': maxScore,
-               'notWrite': notWrite}
+               'notWrite': notWrite, 'quantityByDisassembly': quantityByDisassembly}
     return render(request, 'statistic.html', context)
 
 
