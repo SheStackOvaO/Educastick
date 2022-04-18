@@ -9,6 +9,7 @@ from django.views.generic.edit import CreateView
 
 
 def calcStatistic(request):
+    hq = statistic.hardQuestion()
     abStatistic = statistic.abStatistic()
     quality = statistic.qualityStatistic()
     avgStud = statistic.averageScore()
@@ -16,8 +17,9 @@ def calcStatistic(request):
     maxScore = statistic.maxScore()
     notWrite = statistic.notWrite()
     quantityByDisassembly = statistic.quantityByDisassembly()
+    getModule = statistic.getModule()
     context = {'count': abStatistic, 'quality': quality, 'avgStud': avgStud, 'minScore': minScore, 'maxScore': maxScore,
-               'notWrite': notWrite, 'quantityByDisassembly': quantityByDisassembly}
+               'notWrite': notWrite, 'quantityByDisassembly': quantityByDisassembly, 'getModule': getModule, 'hq': hq}
     return render(request, 'statistic.html', context)
 
 

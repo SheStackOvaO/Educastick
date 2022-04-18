@@ -4,6 +4,12 @@ from teachersPage import models
 from teachersPage import forms
 from django.views.generic.edit import CreateView
 
+
+def getModule():
+    answer = models.Answer.objects.first()
+    return answer.test
+
+
 def abStatistic():
     # Добавить айди препода и группы и проверку относительно их
     answers = models.Answer.objects.all()
@@ -92,7 +98,26 @@ def maxScore():
 
 
 def hardQuestion(): #Вопросы с наименьшим кол-ом правильных ответов
-    return
+    # Добавить айди препода и группы и проверку относительно их
+    rightAnswersSt = {'right':[],'wrong':[]}
+    answers = models.Answer.objects.filter(test=2)
+    rightAnswers = models.QuestionVariantAnswer.objects.filter(correctAnswer=True)
+
+    questions = rightAnswers[1].number
+
+    answersSt = [answer.studentAnswer.split('/') for answer in answers]
+    for i in range(0, len(answersSt)):
+        for questionAnswer in range(0, len(rightAnswers)):
+            if int(answersSt[i][questionAnswer]) == int(rightAnswers[questionAnswer].number):
+                rightAnswersSt['right'].append(rightAnswers[questionAnswer].question.number)
+            else:
+                rightAnswersSt['wrong'].append(rightAnswers[questionAnswer].question.number)
+
+    result = {}
+    rasultarray = set(rightAnswersSt['wrong'])
+    for question in rasultarray:
+        result[question] = rightAnswersSt['wrong'].count(question)
+    return result
 
 
 def chart():
