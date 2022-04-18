@@ -1,8 +1,23 @@
 from django.shortcuts import render
+
+from teachersPage import models
 from teachersPage import forms
+from teachersPage.dataProcessing import statistic
 from django.views.generic.edit import CreateView
 
 # Create your views here.
+
+
+def calcStatistic(request):
+    abStatistic = statistic.abStatistic()
+    quality = statistic.qualityStatistic()
+    avgStud = statistic.averageScore()
+    minScore = statistic.minScore()
+    maxScore = statistic.maxScore()
+    notWrite = statistic.notWrite()
+    context = {'count': abStatistic, 'quality': quality, 'avgStud': avgStud, 'minScore': minScore, 'maxScore': maxScore,
+               'notWrite': notWrite}
+    return render(request, 'statistic.html', context)
 
 
 def main(request):
