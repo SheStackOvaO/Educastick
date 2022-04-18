@@ -111,6 +111,7 @@ class Question(models.Model):
 class QuestionVariantAnswer(models.Model):
     VariantAnswer = models.TextField()
     correctAnswer = models.BooleanField()
+    number = models.IntegerField()
     question = models.ForeignKey(Question, on_delete=models.CASCADE)
 
     def __str__(self):

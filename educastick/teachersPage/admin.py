@@ -209,7 +209,7 @@ class QuestionAdmin(admin.ModelAdmin):
 
 
 class QuestionVariantAnswer(admin.ModelAdmin):
-    list_display = ('get_VariantAnswer', 'get_correctAnswer', 'get_question',)
+    list_display = ('get_VariantAnswer', 'get_correctAnswer', 'get_question', 'get_number',)
 
     def get_VariantAnswer(self, obj):
         return obj.VariantAnswer
@@ -220,9 +220,14 @@ class QuestionVariantAnswer(admin.ModelAdmin):
     def get_question(self, obj):
         return obj.question
 
+    def get_number(self, obj):
+        return obj.number
+
     get_VariantAnswer.short_description = 'Вариант ответа'
     get_correctAnswer.short_description = 'Правильный ответ'
     get_question.short_description = 'Вопрос'
+    get_number.short_description = 'Номер ответа'
+
 
 
 class AnswerAdmin(admin.ModelAdmin):
