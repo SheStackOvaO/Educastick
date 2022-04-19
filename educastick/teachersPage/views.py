@@ -18,8 +18,9 @@ def calcStatistic(request):
     notWrite = statistic.notWrite()
     quantityByDisassembly = statistic.quantityByDisassembly()
     getModule = statistic.getModule()
+    chart = statistic.chart()
     context = {'count': abStatistic, 'quality': quality, 'avgStud': avgStud, 'minScore': minScore, 'maxScore': maxScore,
-               'notWrite': notWrite, 'quantityByDisassembly': quantityByDisassembly, 'getModule': getModule, 'hq': hq}
+               'notWrite': notWrite, 'quantityByDisassembly': quantityByDisassembly, 'getModule': getModule, 'hq': hq, 'chart': chart}
     return render(request, 'statistic.html', context)
 
 
