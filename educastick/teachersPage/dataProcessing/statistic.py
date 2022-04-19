@@ -3,7 +3,7 @@ from django.shortcuts import render
 from teachersPage import models
 from teachersPage import forms
 from django.views.generic.edit import CreateView
-
+import matplotlib.pyplot as plt
 
 def getModule():
     answer = models.Answer.objects.first()
@@ -103,7 +103,6 @@ def hardQuestion(): #Вопросы с наименьшим кол-ом прав
     answers = models.Answer.objects.filter(test=2)
     rightAnswers = models.QuestionVariantAnswer.objects.filter(correctAnswer=True)
 
-    questions = rightAnswers[1].number
 
     answersSt = [answer.studentAnswer.split('/') for answer in answers]
     for i in range(0, len(answersSt)):
@@ -116,12 +115,31 @@ def hardQuestion(): #Вопросы с наименьшим кол-ом прав
     result = {}
     rasultarray = set(rightAnswersSt['wrong'])
     for question in rasultarray:
-        result[question] = rightAnswersSt['wrong'].count(question)
+        questions = models.Question.objects.filter(number=question)[0].description
+        result[question] = [questions, rightAnswersSt['wrong'].count(question)]
     return result
 
 
 def chart():
-    return
+    rightAnswersSt = {'right':[],'wrong':[]}
+    answers = models.Answer.objects.filter(test=2)
+    rightAnswers = models.QuestionVariantAnswer.objects.filter(correctAnswer=True)
+
+
+    answersSt = [answer.studentAnswer.split('/') for answer in answers]
+    for i in range(0, len(answersSt)):
+        for questionAnswer in range(0, len(rightAnswers)):
+            if int(answersSt[i][questionAnswer]) == int(rightAnswers[questionAnswer].number):
+                rightAnswersSt['right'].append(rightAnswers[questionAnswer].question.number)
+            else:
+                rightAnswersSt['wrong'].append(rightAnswers[questionAnswer].question.number)
+
+    result = []
+    rasultarray = set(rightAnswersSt['right'])
+    for question in rasultarray:
+        #questions = models.Question.objects.filter(number=question)[0].description
+        result.append([question, rightAnswersSt['right'].count(question)/len(answers)])
+    return plt.plot(result)
 
 
 def notWrite(): #Список тех, кто не писал тест
