@@ -1,0 +1,44 @@
+.wrapper {
+  height: auto;
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: 1fr 90px;
+  grid-template-areas:
+    "main"
+    "footer";
+}
+.statistic{
+  width: 1000px;
+  margin: 0 auto;
+}
+.tab{
+  font-family: sans-serif;
+  font-weight: bold;
+  font-size: 18px;
+  display: inline-block;
+  padding: 5px;
+  padding-top: 12px;
+  width: 120px;
+  height: 30px;
+  text-align: center;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+}
+.tabs{
+  margin-bottom: -0.5px;
+}
+.but{
+  text-align: center;
+  height: 30px;
+  line-height: 30px;
+  border: 1px solid gray;
+  border-radius: 5px;
+}
+.tab_content{
+  margin-top: -22px;
+  border: 3px solid #222222;
+  border-top-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  padding: 20px;
+}

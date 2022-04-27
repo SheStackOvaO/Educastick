@@ -35,3 +35,9 @@ main{
   grid-auto-rows: minmax(100px, auto);
 }
 
+.plus{
+  display: block;
+  width: 40px;
+  margin: 0 auto;
+}
+
