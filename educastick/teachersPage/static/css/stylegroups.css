@@ -15,7 +15,8 @@ main{
   justify-items: center;
   align-items: center;
   grid-template-columns: repeat(4, minmax(min-content, 1fr));
-  background-color: #222222;
+  background-color: #434242;
+  border-radius: 3px;
   padding: 20px;
   margin-bottom: 20px;
 }
@@ -39,10 +40,11 @@ main{
   width: 100%;
   border: none;
   height: 33px;
+  border-radius: 2px;
 }
 
 .add_answer_but{
-  background-color: #86e586;
+  background-color: #ebecec;
 }
 
 .edit_but{
@@ -77,6 +79,7 @@ main{
   width: 100%;
   border: none;
   height: 30px;
+  border-radius: 1px;
 }
 
 .inner_text:enabled{
@@ -87,13 +90,14 @@ main{
 
 .inner_text:disabled{
   cursor: pointer;
-  color: #222222;
+  color: #434242;
 
 }
 
 .element_add{
   text-align: center;
-  background-color: #222222;
+  background-color: #434242;
+  border-radius: 3px;
   margin-bottom: 20px;
   color: white;
   padding: 10px;
@@ -106,27 +110,29 @@ main{
 }
 
 .active{
-  background-color: #ff8c39;
+  background-color: #47ad48;
   z-index: 50;
 }
 
 #active_green{
   text-align: center;
-  background-color: #86e586;
+  background-color: #47ad48;
 }
 .active_element{
   z-index: 40;
-  border: 5px solid #ff8c39;
+  border: 5px solid #47ad48;
   border-top: 0;
-  margin-top: -20px;
+  margin-top: -25px;
   margin-bottom: 20px;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
   padding: 20px;
 }
 
 .download_button{
   border: 0;
   height: 29px;
-  background-color: #222222;
+  background-color: #434242;
   color: white;
   padding: 10px;
   margin-top: 15px;
@@ -138,7 +144,7 @@ main{
   width: 18%;
   text-align: center;
   height: 29px;
-  background-color: #222222;
+  background-color: #434242;
   color: white;
   padding: 10px;
   text-decoration: none;
@@ -161,7 +167,7 @@ main{
 }
 .photo_answers table td, .photo_answers table th{
   padding-top: 10px;
-  border-bottom: 2px solid #222222;
+  border-bottom: 2px solid #434242;
 }
 
 .photo_div{
@@ -182,11 +188,11 @@ main{
 }
 
 .active:hover{
-  background-color: #ff9f58;
+  background-color: #86e586;
 }
 
 .active:hover + .active_element{
-  border-color: #ff9f58;
+  border-color: #86e586;
 }
 
 .select_element{
@@ -209,7 +215,7 @@ main{
 .close_choose{
   cursor: pointer;
   position: absolute;
-  background-color: #222222;
+  background-color: #434242;
   color: white;
   text-align: center;
   line-height: 48px;
@@ -221,9 +227,28 @@ main{
 }
 
 .find_element{
-  border-color: #222222;
+  border-color: #434242;
   width: 98%;
   height: 42px;
   font-size: 20px;
 }
 
+.new_question_button{
+  height: 50px;
+}
+
+.new_question_answer_button{
+  height: 30px;
+}
+
+.save_button{
+  float: right;
+  height: 50px;
+  width: 200px;
+}
+
+.input_text{
+  border-top: none;
+  border-left: none;
+  border-right: none;
+}

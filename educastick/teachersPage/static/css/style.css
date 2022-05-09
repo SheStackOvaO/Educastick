@@ -19,7 +19,8 @@ body {
 }
 .description_main{
   grid-area: description_main;
-  border-bottom: 10px solid #222222;
+  border-bottom: 3px solid #47ad48;
+  box-shadow: 0 0 10px -3px black;
   padding: 0 10% 30px;
 }
 .description_main h1{
