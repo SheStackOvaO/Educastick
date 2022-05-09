@@ -142,6 +142,7 @@ def chart():
     return # plt.plot(result).show()
 
 
+
 def notWrite(): #Список тех, кто не писал тест
     answers = models.Answer.objects.all()
     students = models.Student.objects.all()

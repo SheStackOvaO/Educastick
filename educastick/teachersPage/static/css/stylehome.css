@@ -61,11 +61,7 @@ h4{
   float: right;
 }
 
-#plus{
-  width: 50px;
-  margin-top: 25px;
-  margin-right: 0;
-}
+
 
 @media (max-width: 1600px) {
   .groups{

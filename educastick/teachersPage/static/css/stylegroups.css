@@ -1,53 +1,225 @@
-.filter{
-  color: white;
-  font-size: 20px;
-  padding: 10px;
-  margin: 20px 0;
-  background-color: #222222;
-  width: 250px;
-  height: 50px;
-  float: left;
-}
-.filter:hover{
-  background-color: #555555;
-}
-.search{
-  width: 250px;
-  margin: 20px 0;
-  float: right;
-}
-.search * {box-sizing: border-box;}
-.search form {
-  position: relative;
-  width: 250px;
-  height: 50px;
+main{
+  width: 65%;
   margin: 0 auto;
 }
-.search input {
+.main_list{
+  font-size: 20px;
+  margin: 0 auto;
   width: 100%;
-  height: 100%;
-  padding-left: 10px;
-  border: 3px solid #222222;
-  outline: none;
-  background: transparent;
-  color: #9E9C9C;
-}
-.search button {
-  position: absolute;
-  top: 0;
-  right: 0px;
-  width: 42px;
-  height: 42px;
-  border: none;
-  background: transparent;
-  cursor: pointer;
-}
-.search button:before {
-  content: "\f002";
-  font-size: 16px;
-  color: #222222;
 }
 
-.search input:focus {
-  border-color: #888888;
+.element{
+  cursor: pointer;
+  display: grid;
+  grid-gap: 20px;
+  justify-items: center;
+  align-items: center;
+  grid-template-columns: repeat(4, minmax(min-content, 1fr));
+  background-color: #222222;
+  padding: 20px;
+  margin-bottom: 20px;
 }
+
+.element:hover{
+  background-color: #303030;
+}
+
+
+.crud_butts{
+  width: 100%;
+  padding: 0;
+  display: grid;
+  grid-column-gap: 20px;
+  justify-content: space-evenly;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.crud_but{
+  padding: 0;
+  width: 100%;
+  border: none;
+  height: 33px;
+}
+
+.add_answer_but{
+  background-color: #86e586;
+}
+
+.edit_but{
+  background-color: #11b0e0;
+}
+
+.del_but{
+  background-color: #e53f3f;
+}
+
+.crud_but:hover{
+  filter: brightness(130%);
+}
+
+.crud_but:active{
+  border: transparent 3px solid;
+  filter: brightness(90%);
+}
+
+.crud_but_img{
+  height: 80%;
+  object-fit: contain;
+  margin: 0;
+}
+
+.inner_text{
+  background-color: whitesmoke;
+  width: 100%;
+  border: none;
+  height: 30px;
+}
+
+.inner_text:enabled{
+  background-color: white;
+  border: #86e586 3px solid;
+  border-radius: 5px;
+}
+
+.inner_text:disabled{
+  cursor: pointer;
+  color: #222222;
+
+}
+
+.element_add{
+  text-align: center;
+  background-color: #222222;
+  margin-bottom: 20px;
+  color: white;
+  padding: 10px;
+  cursor: pointer;
+  z-index: 20;
+}
+
+.element_add:hover, .download_button:hover {
+  background-color: #303030;
+}
+
+.active{
+  background-color: #ff8c39;
+  z-index: 50;
+}
+
+#active_green{
+  text-align: center;
+  background-color: #86e586;
+}
+.active_element{
+  z-index: 40;
+  border: 5px solid #ff8c39;
+  border-top: 0;
+  margin-top: -20px;
+  margin-bottom: 20px;
+  padding: 20px;
+}
+
+.download_button{
+  border: 0;
+  height: 29px;
+  background-color: #222222;
+  color: white;
+  padding: 10px;
+  margin-top: 15px;
+}
+
+.statistic_href{
+  float: right;
+  display: block;
+  width: 18%;
+  text-align: center;
+  height: 29px;
+  background-color: #222222;
+  color: white;
+  padding: 10px;
+  text-decoration: none;
+}
+
+#save_answer{
+  height: 49px;
+}
+
+.photo_answers{
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.photo_answers table{
+  text-align: left;
+  display: inline-block;
+  vertical-align: top;
+  margin: 20px;
+}
+.photo_answers table td, .photo_answers table th{
+  padding-top: 10px;
+  border-bottom: 2px solid #222222;
+}
+
+.photo_div{
+  float: left;
+}
+
+.photo{
+  width: 200px;
+  margin: 20px;
+  display: inline-block;
+}
+.test_answers{
+  font-size: smaller;
+}
+
+.active_element_choose{
+  margin-left: 100px;
+}
+
+.active:hover{
+  background-color: #ff9f58;
+}
+
+.active:hover + .active_element{
+  border-color: #ff9f58;
+}
+
+.select_element{
+  position: relative;
+}
+
+.elements_choose{
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+}
+
+.element_in_list:hover{
+  cursor: pointer;
+  background-color: lightgrey;
+}
+
+.close_choose{
+  cursor: pointer;
+  position: absolute;
+  background-color: #222222;
+  color: white;
+  text-align: center;
+  line-height: 48px;
+  z-index: 80;
+  top: 0;
+  right: 0;
+  height: 48px;
+  width: 48px;
+}
+
+.find_element{
+  border-color: #222222;
+  width: 98%;
+  height: 42px;
+  font-size: 20px;
+}
+

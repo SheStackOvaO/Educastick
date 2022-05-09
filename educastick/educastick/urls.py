@@ -23,6 +23,7 @@ from educastick import settings
 
 urlpatterns = [
     path('accounts/', include('allauth.urls')),
+    path('tests/', views.tests),
     path('admin/', admin.site.urls),
     path('', views.main),
     path('account/', views.account),
