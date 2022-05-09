@@ -15,15 +15,7 @@ $(document).ready(function () {
 
   $(document).on('click','.active_group_choose', function()
   {
-    if ($(this).hasClass('active_choose'))
-    {
-      $(this).removeClass('active_choose')
-      $(this).next('.elements_choose').detach()
-    } else
-      {
-      $(this).addClass('active_choose')
       $(this).after(ElementSelectBlock())
-
       let datalist = document.querySelector('#list_elements')
         let datalist2 = $(this).siblings().children('#list_elements')
         console.log(datalist2)
@@ -34,7 +26,6 @@ $(document).ready(function () {
           el.value = opt
           datalist.appendChild(el)
         }
-    }
   })
 })
 
@@ -64,11 +55,15 @@ function CreateTestAnswerBlock(module = '', theme = '', element_id){
 function ElementSelectBlock(){
   return $('<div class="elements_choose">\n' +
     '            <input list="list_elements" class="find_element">\n' +
-    '            <button class="close_choose">X</button>     ' +
+    '            <div class="close_choose" >X</div>     ' +
     '            <datalist id="list_elements">\n' +
     '            </datalist>\n' +
     '          </div>')
 }
+
+$(document).on('click','.close_choose', function(){
+  $(this).parent().remove()
+})
 
 
 

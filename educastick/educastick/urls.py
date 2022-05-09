@@ -22,6 +22,7 @@ from teachersPage import views
 from educastick import settings
 
 urlpatterns = [
+    path('tests/', views.tests),
     path('admin/', admin.site.urls),
     path('', views.main),
     path('account/', views.account),

@@ -1,20 +1,21 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Тесты</title>
-  <link rel="stylesheet" href="css/normalize.css">
-  <link rel="stylesheet" href="css/main.css">
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="header.css">
-  <link rel="stylesheet" href="stylegroups.css">
-  <link rel="stylesheet" href="stylefilter.css">
+  <link rel="stylesheet" href="{% static 'css/normalize.css'%}">
+  <link rel="stylesheet" href="{% static 'css/main.css'%}">
+  <link rel="stylesheet" href="{% static 'css/header.css'%}">
+  <link rel="stylesheet" href="{% static 'css/style.css'%}">
+  <link rel="stylesheet" href="{% static 'css/stylegroups.css'%}">
+  <link rel="stylesheet" href="{% static 'css/stylefilter.css'%}">
 </head>
 <body>
 <header>
   <div class="logo">
-    <a href="index.html"><img src="logo.png" id="logo" alt=""></a>
+    <a href="index.html"><img src="{% static 'images/logo.png'%}" id="logo" alt=""></a>
   </div>
   <div class="abutt">
     <a href="#">Статистика</a>
@@ -23,7 +24,7 @@
     <a href="#">Ответы</a>
   </div>
   <div class="ava">
-    <img src="placeholder-man.png" alt="" id="ava">
+    <img src="{% static 'images/placeholder-man.png'%}" alt="" id="ava">
   </div>
 </header>
 <div class="wrapper">
@@ -47,7 +48,7 @@
     <div class="main_list">
 
       <div class="element_add">
-        <img src="img/plusimage.png" alt="" class="plus">
+        <img src="{% static 'images/plus.png'%}" alt="" class="plus">
       </div>
 
       <div class="element" id="1">
@@ -55,9 +56,9 @@
         <input type="text" disabled class="inner_text" value="Русский язык">
         <input type="text" disabled class="inner_text" value="Контрольный тест">
         <div class="crud_butts">
-          <button class="crud_but add_but"><img src="img/plusimage.png" alt="" class="crud_but_img"></button>
-          <button class="crud_but edit_but"><img src="img/plusimage.png" alt="" class="crud_but_img"></button>
-          <button class="crud_but del_but"><img src="img/plusimage.png" alt="" class="crud_but_img"></button>
+          <button class="crud_but add_but"><img src="{% static 'images/plus.png'%}" alt="" class="crud_but_img"></button>
+          <button class="crud_but edit_but"><img src="{% static 'images/plus.png'%}" alt="" class="crud_but_img"></button>
+          <button class="crud_but del_but"><img src="{% static 'images/plus.png'%}" alt="" class="crud_but_img"></button>
         </div>
 
       </div>
@@ -96,9 +97,9 @@
         <input type="text" disabled class="inner_text" value="Русский язык">
         <input type="text" disabled class="inner_text" value="Контрольный тест">
         <div class="crud_butts">
-          <button class="crud_but add_but"><img src="img/plusimage.png" alt="" class="crud_but_img"></button>
-          <button class="crud_but edit_but"><img src="img/plusimage.png" alt="" class="crud_but_img"></button>
-          <button class="crud_but del_but"><img src="img/plusimage.png" alt="" class="crud_but_img"></button>
+          <button class="crud_but add_but"><img src="{% static 'images/plus.png'%}" alt="" class="crud_but_img"></button>
+          <button class="crud_but edit_but"><img src="{% static 'images/plus.png'%}" alt="" class="crud_but_img"></button>
+          <button class="crud_but del_but"><img src="{% static 'images/plus.png'%}" alt="" class="crud_but_img"></button>
         </div>
       </div>
 
@@ -113,5 +114,5 @@
 </body>
 <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
         crossorigin="anonymous"></script>
-<script src="js/testsScript.js"></script>
+<script src="{% static 'js/testsScript.js'%}"></script>
 </html>
