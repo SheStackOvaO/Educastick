@@ -5,7 +5,7 @@ function MakeBlockActive(){
       $(this).next('.active_element').detach()
     } else{
       $(this).addClass('active')
-      $(this).after(CreateTestActiveBlock('Части речи', 'Глаголы', element_id))
+      $(this).after(CreateTestActiveBlock('Части речи', 'Глаголы'))
     }
 }
 
@@ -22,7 +22,9 @@ function AddAnswersButton(){
 }
 
 function CreateTestAnswerBlock(module = '', theme = '', element_id){
+    let imgSrc = $('#hidden_goBackImg').attr('src')
   return $('<div class="active_element">\n' +
+    '        <button class="go_back_button"><img src="' + imgSrc + '" alt="" class="plus"></button>' +
     '        <form action="" name="' + element_id + '">\n' +
     '        <div class="active_text">\n' +
     '          <p>Модуль: ' + module + '</p>\n' +
@@ -44,19 +46,17 @@ function CreateTestAnswerBlock(module = '', theme = '', element_id){
     '      </div>')
 }
 
-function CreateTestActiveBlock(module = '', theme = '', element_id){
+function CreateTestActiveBlock(module = '', theme = ''){
   return $('<div class="active_element">\n' +
       '  <a href="" class="statistic_href">Статистика</a>\n' +
       '        <div class="active_text">\n' +
       '          <p>Модуль: ' + module + '</p>\n' +
       '          <p>Тема: ' + theme + '</p>\n' +
       '          <p>Вопросы:</p>\n' +
-      '          <ul type="none">\n' +
-      '            <li>Вопрос 1</li>\n' +
-      '            <li>Ответ:</li>\n' +
-      '            <li>Вопрос 2</li>\n' +
-      '            <li>Ответ:</li>\n' +
-      '          </ul>\n' +
+      '          <ol>\n' +
+      '            <li><p>Вопрос</p><p>Ответ: </p></li>\n' +
+      '            <li><p>Вопрос</p><p>Ответ: </p></li>\n' +
+      '          </ol>\n' +
       '        </div>\n' +
       '      </div>')
 }
@@ -97,9 +97,15 @@ $(document).ready(function () {
         }
   })
 
-$(document).on('click','.close_choose', function(){
-  $(this).parent().remove()
-})
+    $(document).on('click','.close_choose', function(){
+    $(this).parent().remove()
+    })
+
+    $(document).on('click','.go_back_button', function(){
+        let parentElement = $(this).parents('.active_element').prev()
+        $(this).parents('.active_element').detach()
+        parentElement.after(CreateTestActiveBlock('Части речи', 'Глаголы'))
+    })
 
 
 

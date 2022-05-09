@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="{% static 'css/stylefilter.css'%}">
 </head>
 <body>
+<img src="{% static 'images/goBack.png'%}" alt="" id="hidden_goBackImg" hidden>
 <header>
   <div class="logo">
     <a href="index.html"><img src="{% static 'images/logo.png'%}" id="logo" alt=""></a>
@@ -57,11 +58,46 @@
         <input type="text" disabled class="inner_text" value="Контрольный тест">
         <div class="crud_butts">
           <button class="crud_but add_answer_but"><img src="{% static 'images/plus.png'%}" alt="" class="crud_but_img"></button>
-          <button class="crud_but edit_but"><img src="{% static 'images/plus.png'%}" alt="" class="crud_but_img"></button>
-          <button class="crud_but del_but"><img src="{% static 'images/plus.png'%}" alt="" class="crud_but_img"></button>
+          <button class="crud_but edit_but"><img src="{% static 'images/edit.png'%}" alt="" class="crud_but_img"></button>
+          <button class="crud_but del_but"><img src="{% static 'images/delete.png'%}" alt="" class="crud_but_img"></button>
         </div>
 
       </div>
+      
+      <div class="active_element">
+        <div class="active_text">
+          <p><label>Модуль:
+            <input type="text" name="moduleInput" class="input_text">
+          </label></p>
+          <p><label>Тема:
+            <input type="text" name="themeInput" class="input_text">
+          </label></p>
+          <p>Вопросы:</p>
+          <ol>
+            <li>
+              <p>
+                <input type="text" name="question1" class="input_text">
+              </p>
+              <p>
+                <label>Ответ:
+                  <input type="text" name="answer1" class="input_text">
+                </label>
+              </p>
+            </li>
+            <li>
+              <p>
+                <input type="text" name="question2" class="input_text">
+              </p>
+              <p>
+                <label>Ответ:
+                  <input type="text" name="answer2" class="input_text">
+                </label>
+              </p>
+            </li>
+          </ol>
+        </div>
+      </div>
+      
 <!--<div class="active_element">
   <a href="" class="statistic_href">Статистика</a>
         <div class="active_text">
@@ -76,7 +112,10 @@
           </ul>
         </div>
       </div>-->
+
+
       <!--<div class="active_element">
+        <button class="go_back_button"><img src="{% static 'images/goBack.png'%}" alt="" class="plus"></button>
         <form action="" name="send_answer">
         <div class="active_text">
           <p>Модуль: Части речи</p>
@@ -111,8 +150,8 @@
         <input type="text" disabled class="inner_text" value="Контрольный тест">
         <div class="crud_butts">
           <button class="crud_but add_answer_but"><img src="{% static 'images/plus.png'%}" alt="" class="crud_but_img"></button>
-          <button class="crud_but edit_but"><img src="{% static 'images/plus.png'%}" alt="" class="crud_but_img"></button>
-          <button class="crud_but del_but"><img src="{% static 'images/plus.png'%}" alt="" class="crud_but_img"></button>
+          <button class="crud_but edit_but"><img src="{% static 'images/edit.png'%}" alt="" class="crud_but_img"></button>
+          <button class="crud_but del_but"><img src="{% static 'images/delete.png'%}" alt="" class="crud_but_img"></button>
         </div>
       </div>
 

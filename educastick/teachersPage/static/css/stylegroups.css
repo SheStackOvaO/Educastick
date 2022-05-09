@@ -68,6 +68,10 @@ main{
   margin: 0;
 }
 
+.go_back_button{
+  float: right;
+}
+
 .inner_text{
   background-color: whitesmoke;
   width: 100%;
