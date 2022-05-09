@@ -3,7 +3,7 @@ from django.shortcuts import render
 from teachersPage import models
 from teachersPage import forms
 from django.views.generic.edit import CreateView
-import matplotlib.pyplot as plt
+#import matplotlib.pyplot as plt
 
 def getModule():
     answer = models.Answer.objects.first()
@@ -139,7 +139,7 @@ def chart():
     for question in rasultarray:
         # questions = models.Question.objects.filter(number=question)[0].description
         result.append([question, rightAnswersSt['right'].count(question)/len(answers)])
-    return plt.plot(result).show()
+    return # plt.plot(result).show()
 
 
 def notWrite(): #Список тех, кто не писал тест
