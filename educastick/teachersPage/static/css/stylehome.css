@@ -6,20 +6,28 @@ main{
   float: left;
 }
 
-img{
+.account_img{
   width: 300px;
-  background-color: #222222;
+  background-color: #434242;
+  border-radius: 5px;
 }
 
 .personal_information{
+  background-color: #ebecec;
+  border-radius: 5px;
   padding: 20px;
   font-size: 20px;
   margin: 0 auto;
   width: 69%;
 }
 
+hr{
+  border-color: #434242;
+}
+
 .group_title{
-  border-bottom: 10px solid #222222;
+  border-bottom: 5px solid #47ad48;
+  border-radius: 5px;
   margin-bottom: 20px;
   padding: 20px;
 }
@@ -40,7 +48,8 @@ img{
 }
 
 .group{
-  background-color: #222222;
+  border-radius: 5px;
+  background-color: #434242;
   padding: 0 20px;
   color: white;
   margin-bottom: 20px;
