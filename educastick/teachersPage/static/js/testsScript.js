@@ -186,6 +186,7 @@ $(document).ready(function () {
             '                            </p>'))
     })
 
+
     $(document).on('click', '.delete_question_answer_button', function () {
         $(this).parent().prev('.question_answer').children('.variant_answer:last').remove()
     })
