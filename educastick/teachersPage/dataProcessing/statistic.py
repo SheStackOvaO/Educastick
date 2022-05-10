@@ -137,9 +137,10 @@ def chart():
     result = []
     rasultarray = set(rightAnswersSt['right'])
     for question in rasultarray:
-        #questions = models.Question.objects.filter(number=question)[0].description
+        # questions = models.Question.objects.filter(number=question)[0].description
         result.append([question, rightAnswersSt['right'].count(question)/len(answers)])
-   # return plt.plot(result)
+    return # plt.plot(result).show()
+
 
 
 def notWrite(): #Список тех, кто не писал тест
