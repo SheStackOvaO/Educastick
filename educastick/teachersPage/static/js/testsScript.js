@@ -173,7 +173,6 @@ $(document).ready(function () {
             '</div>'))
     })
 
-
     $(document).on('click', '.delete_question_button', function () {
         $(this).parent().prev('.active_text').children('ol').children('.question_answer:last').remove()
         $(this).parent().prev('.active_text').children('ol').children('.add_delete_buttons_in_question_answer_list:last').remove()

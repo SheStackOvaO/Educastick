@@ -18,7 +18,6 @@ body {
     "main"
     "footer";
 }
-
 .description_main{
   grid-area: description_main;
   background-color: #ebecec;
