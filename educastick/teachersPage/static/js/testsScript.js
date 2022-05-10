@@ -1,3 +1,7 @@
+let goBackImgSrc = $('#hidden_goBackImg').attr('src')
+    let plusImgSrc = $('#hidden_plusImg').attr('src')
+    let deleteImgSrc = $('#hidden_deleteImg').attr('src')
+
 function MakeBlockActive() {
     let element_id = $(this).attr('id')
     if ($(this).hasClass('active')) {
@@ -34,9 +38,6 @@ function EditButton() {
 }
 
 function CreateEditTestBlock(element_id){
-    let goBackImgSrc = $('#hidden_goBackImg').attr('src')
-    let plusImgSrc = $('#hidden_plusImg').attr('src')
-    let deleteImgSrc = $('#hidden_deleteImg').attr('src')
     return $('<div class="active_element">\n' +
         '        <button class="go_back_button"><img src="' + goBackImgSrc + '" alt="" class="plus"></button>' +
         '        <form action="" name="' + element_id + '">\n' +
@@ -64,9 +65,9 @@ function CreateEditTestBlock(element_id){
         '                                </label>\n' +
         '                            </p>\n' +
         '                        </li>\n' +
-        '<div>' +
-        '                             <button class="new_question_answer_button"><img src="'+plusImgSrc+'" alt="" class="crud_but_img"></button>\n' +
-        '                             <button class="delete_question_answer_button"><img src="'+deleteImgSrc+'" alt="" class="crud_but_img"></button>\n' +
+        '<div class="add_delete_buttons_in_question_answer_list">' +
+        '                             <div class="new_question_answer_button"><img src="'+plusImgSrc+'" alt="" class="crud_but_img"></div>\n' +
+        '                             <div class="delete_question_answer_button"><img src="'+deleteImgSrc+'" alt="" class="crud_but_img"></div>\n' +
         '</div>' +
         '                        <li class="question_answer">\n' +
         '                            <p>\n' +
@@ -78,14 +79,15 @@ function CreateEditTestBlock(element_id){
         '                                </label>\n' +
         '                            </p>\n' +
         '                        </li>\n' +
-        '<div>' +
-        '                             <button class="new_question_answer_button"><img src="'+plusImgSrc+'" alt="" class="crud_but_img"></button>\n' +
-        '                             <button class="delete_question_answer_button"><img src="'+deleteImgSrc+'" alt="" class="crud_but_img"></button>\n' +
+        '<div class="add_delete_buttons_in_question_answer_list">' +
+        '                             <div class="new_question_answer_button"><img src="'+plusImgSrc+'" alt="" class="crud_but_img"></div>\n' +
+        '                             <div class="delete_question_answer_button"><img src="'+deleteImgSrc+'" alt="" class="crud_but_img"></div>\n' +
         '</div>' +
         '                    </ol>\n' +
         '                </div>\n' +
         '                <div class="edit_buttons">\n' +
-        '                    <button class="new_question_button"><img src="'+plusImgSrc+'" alt="" class="crud_but_img"></button>\n' +
+        '                    <div class="new_question_button"><img src="'+plusImgSrc+'" alt="" class="crud_but_img"></div>\n' +
+        '                             <div class="delete_question_button"><img src="'+deleteImgSrc+'" alt="" class="crud_but_img"></div>\n' +
         '                    <button class="save_button">Сохранить</button>\n' +
         '                </div>\n' +
         '        </form>\n' +
@@ -93,7 +95,6 @@ function CreateEditTestBlock(element_id){
 }
 
 function CreateTestAnswerBlock(module = '', theme = '', element_id) {
-    let imgSrc = $('#hidden_goBackImg').attr('src')
     return $('<div class="active_element">\n' +
         '        <button class="go_back_button"><img src="' + imgSrc + '" alt="" class="plus"></button>' +
         '        <form action="" name="' + element_id + '">\n' +
@@ -154,6 +155,28 @@ $(document).ready(function () {
     $('.add_answer_but').click(AddAnswersButton)
 
     $('.edit_but').click(EditButton)
+
+    $(document).on('click', '.new_question_button', function () {
+        $(this).parent().prev('.active_text').children('ol').append($('<li  class="question_answer">\n' +
+            '                            <p>\n' +
+            '                                <input type="text" name="1" class="input_text">\n' +
+            '                            </p>\n' +
+            '                            <p>\n' +
+            '                                <label>Правильный ответ:\n' +
+            '                                    <input type="text" name="1_1" class="input_text">\n' +
+            '                                </label>\n' +
+            '                            </p>\n' +
+            '                        </li>' +
+            '<div class="add_delete_buttons_in_question_answer_list">' +
+            '                             <div class="new_question_answer_button"><img src="'+plusImgSrc+'" alt="" class="crud_but_img"></div>\n' +
+            '                             <div class="delete_question_answer_button"><img src="'+deleteImgSrc+'" alt="" class="crud_but_img"></div>\n' +
+            '</div>'))
+    })
+
+    $(document).on('click', '.delete_question_button', function () {
+        $(this).parent().prev('.active_text').children('ol').children('.question_answer:last').remove()
+        $(this).parent().prev('.active_text').children('ol').children('.add_delete_buttons_in_question_answer_list:last').remove()
+    })
 
     $(document).on('click', '.new_question_answer_button', function () {
         $(this).parent().prev('.question_answer').append($('<p class="variant_answer">\n' +
