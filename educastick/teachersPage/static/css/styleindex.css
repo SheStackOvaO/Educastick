@@ -39,6 +39,7 @@
   cursor: pointer;
 }
 
+
 .description_block:hover::after {
   opacity: 1;
 }

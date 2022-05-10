@@ -28,6 +28,7 @@ def main(request):
     return render(request, 'index.html')
 
 
+
 def account(request):
     return render(request, 'account.html')
 
