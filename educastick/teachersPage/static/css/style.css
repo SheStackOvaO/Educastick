@@ -11,7 +11,7 @@ body {
   height: auto;
   min-height: 100vh;
   display: grid;
-  grid-template-rows: minmax(200px, auto) 1fr 90px;
+  grid-template-rows: minmax(200px, auto) 1fr 70px;
   grid-template-areas:
     "description_main"
     "main"

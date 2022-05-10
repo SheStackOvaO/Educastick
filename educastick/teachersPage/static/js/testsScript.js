@@ -35,6 +35,7 @@ function EditButton() {
 function CreateEditTestBlock(){
     let goBackImgSrc = $('#hidden_goBackImg').attr('src')
     let plusImgSrc = $('#hidden_plusImg').attr('src')
+    let deleteImgSrc = $('#hidden_deleteImg').attr('src')
     return $('<div class="active_element">\n' +
         '        <button class="go_back_button"><img src="' + goBackImgSrc + '" alt="" class="plus"></button>' +
         '                <div class="active_text">\n' +
@@ -46,7 +47,7 @@ function CreateEditTestBlock(){
         '                    </label></p>\n' +
         '                    <p>Вопросы:</p>\n' +
         '                    <ol>\n' +
-        '                        <li>\n' +
+        '                        <li class="question_answer">\n' +
         '                            <p>\n' +
         '                                <input type="text" name="1" class="input_text">\n' +
         '                            </p>\n' +
@@ -55,14 +56,17 @@ function CreateEditTestBlock(){
         '                                    <input type="text" name="1_1" class="input_text">\n' +
         '                                </label>\n' +
         '                            </p>\n' +
-        '                            <p>\n' +
+        '                            <p class="variant_answer">\n' +
         '                                <label>Вариант ответа:\n' +
         '                                    <input type="text" name="1_2" class="input_text">\n' +
         '                                </label>\n' +
         '                            </p>\n' +
-        '                             <button class="new_question_answer_button"><img src="'+plusImgSrc+'" alt="" class="crud_but_img"></button>\n' +
         '                        </li>\n' +
-        '                        <li>\n' +
+        '<div>' +
+        '                             <button class="new_question_answer_button"><img src="'+plusImgSrc+'" alt="" class="crud_but_img"></button>\n' +
+        '                             <button class="delete_question_answer_button"><img src="'+deleteImgSrc+'" alt="" class="crud_but_img"></button>\n' +
+        '</div>' +
+        '                        <li class="question_answer">\n' +
         '                            <p>\n' +
         '                                <input type="text" name="2" class="input_text">\n' +
         '                            </p>\n' +
@@ -71,8 +75,11 @@ function CreateEditTestBlock(){
         '                                    <input type="text" name="2_1" class="input_text">\n' +
         '                                </label>\n' +
         '                            </p>\n' +
-        '                             <button class="new_question_answer_button"><img src="'+plusImgSrc+'" alt="" class="crud_but_img"></button>\n' +
         '                        </li>\n' +
+        '<div>' +
+        '                             <button class="new_question_answer_button"><img src="'+plusImgSrc+'" alt="" class="crud_but_img"></button>\n' +
+        '                             <button class="delete_question_answer_button"><img src="'+deleteImgSrc+'" alt="" class="crud_but_img"></button>\n' +
+        '</div>' +
         '                    </ol>\n' +
         '                </div>\n' +
         '                <div class="edit_buttons">\n' +
@@ -144,6 +151,18 @@ $(document).ready(function () {
     $('.add_answer_but').click(AddAnswersButton)
 
     $('.edit_but').click(EditButton)
+
+    $(document).on('click', '.new_question_answer_button', function () {
+        $(this).parent().prev('.question_answer').append($('<p class="variant_answer">\n' +
+            '                                <label>Вариант ответа:\n' +
+            '                                    <input type="text" name="1_2" class="input_text">\n' +
+            '                                </label>\n' +
+            '                            </p>'))
+    })
+
+    $(document).on('click', '.delete_question_answer_button', function () {
+        $(this).parent().prev('.question_answer').children('.variant_answer:last').remove()
+    })
 
     $(document).on('click', '.active_group_choose', function () {
         $(this).after(ElementSelectBlock())

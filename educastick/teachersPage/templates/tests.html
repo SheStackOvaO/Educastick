@@ -15,6 +15,7 @@
 <body>
 <img src="{% static 'images/goBack.png'%}" alt="" id="hidden_goBackImg" hidden>
 <img src="{% static 'images/plus.png'%}" alt="" id="hidden_plusImg" hidden>
+<img src="{% static 'images/delete.png'%}" alt="" id="hidden_deleteImg" hidden>
 <header>
     <div class="logo">
         <a href="index.html"><img src="{% static 'images/logo.png'%}" id="logo" alt=""></a>
@@ -93,6 +94,8 @@
                                 </label>
                             </p>
                              <button class="new_question_answer_button"><img src="{% static 'images/plus.png'%}" alt="" class="crud_but_img"></button>
+                             <button class="delete_question_answer_button"><img src="'+plusImgSrc+'" alt="" class="crud_but_img"></button>
+
                         </li>
                         <li>
                             <p>
@@ -104,6 +107,7 @@
                                 </label>
                             </p>
                              <button class="new_question_answer_button"><img src="{% static 'images/plus.png'%}" alt="" class="crud_but_img"></button>
+                             <button class="delete_question_answer_button"><img src="'+plusImgSrc+'" alt="" class="crud_but_img"></button>
                         </li>
                     </ol>
                 </div>

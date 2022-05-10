@@ -22,9 +22,8 @@ main{
 }
 
 .element:hover{
-  background-color: #303030;
+  background-color: #47ad48;
 }
-
 
 .crud_butts{
   width: 100%;
@@ -106,7 +105,7 @@ main{
 }
 
 .element_add:hover, .download_button:hover {
-  background-color: #303030;
+  background-color: #47ad48;
 }
 
 .active{
@@ -237,7 +236,7 @@ main{
   height: 50px;
 }
 
-.new_question_answer_button{
+.new_question_answer_button, .delete_question_answer_button{
   height: 30px;
 }
 
