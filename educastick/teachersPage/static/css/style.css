@@ -11,6 +11,7 @@ body {
   height: auto;
   min-height: 100vh;
   display: grid;
+  background-color: #b6b6b6;
   grid-template-rows: minmax(200px, auto) 1fr 70px;
   grid-template-areas:
     "description_main"
@@ -19,6 +20,7 @@ body {
 }
 .description_main{
   grid-area: description_main;
+  background-color: #ebecec;
   border-bottom: 3px solid #47ad48;
   box-shadow: 0 0 10px -3px black;
   padding: 0 10% 30px;

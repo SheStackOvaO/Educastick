@@ -95,7 +95,7 @@ main{
 
 .element_add{
   text-align: center;
-  background-color: #434242;
+  background-color: #47ad48;
   border-radius: 3px;
   margin-bottom: 20px;
   color: white;
@@ -105,7 +105,7 @@ main{
 }
 
 .element_add:hover, .download_button:hover {
-  background-color: #47ad48;
+  background-color: #434242;
 }
 
 .active{
@@ -120,6 +120,7 @@ main{
 .active_element{
   z-index: 40;
   border: 5px solid #47ad48;
+  background-color: #ebecec;
   border-top: 0;
   margin-top: -25px;
   margin-bottom: 20px;
@@ -187,11 +188,11 @@ main{
 }
 
 .active:hover{
-  background-color: #86e586;
+  background-color: #434242;
 }
 
 .active:hover + .active_element{
-  border-color: #86e586;
+  border-color: #434242;
 }
 
 .select_element{

@@ -23,21 +23,23 @@ function AddAnswersButton() {
 
 function EditButton() {
     let element_id = $(this).parents('.element').attr('id')
+    //console.log(element_id)
     if ($(this).parents('.element').hasClass('active')) {
         $(this).parents('.element').next('.active_element').detach()
         $(this).parents('.element').after(CreateEditTestBlock)
     } else {
         $(this).parents('.element').addClass('active')
-        $(this).parents('.element').after(CreateEditTestBlock)
+        $(this).parents('.element').after(CreateEditTestBlock(element_id))
     }
 }
 
-function CreateEditTestBlock(){
+function CreateEditTestBlock(element_id){
     let goBackImgSrc = $('#hidden_goBackImg').attr('src')
     let plusImgSrc = $('#hidden_plusImg').attr('src')
     let deleteImgSrc = $('#hidden_deleteImg').attr('src')
     return $('<div class="active_element">\n' +
         '        <button class="go_back_button"><img src="' + goBackImgSrc + '" alt="" class="plus"></button>' +
+        '        <form action="" name="' + element_id + '">\n' +
         '                <div class="active_text">\n' +
         '                    <p><label>Модуль:\n' +
         '                        <input type="text" name="moduleInput" class="input_text">\n' +
@@ -86,6 +88,7 @@ function CreateEditTestBlock(){
         '                    <button class="new_question_button"><img src="'+plusImgSrc+'" alt="" class="crud_but_img"></button>\n' +
         '                    <button class="save_button">Сохранить</button>\n' +
         '                </div>\n' +
+        '        </form>\n' +
         '            </div>')
 }
 
