@@ -23,12 +23,14 @@ from educastick import settings
 
 urlpatterns = [
     path('accounts/', include('allauth.urls')),
-    path('tests/', views.tests),
+    path('tests/', views.tests, name='tests'),
+    path('answers/', views.answers, name='answers'),
     path('admin/', admin.site.urls),
     path('', views.main, name='main'),
-    path('account/', views.account),
+    path('account/', views.account, name='account'),
     path('test/', views.test),
-    path('statistic/', views.calcStatistic),
+    path('statistics/', views.statistics, name='statistics'),
+    path('statistic/', views.calcStatistic, name='statistic'),
     path('add/', views.TypeGroupCreateView.as_view(), name='add'),
 ]
 

@@ -24,8 +24,15 @@ def calcStatistic(request):
     return render(request, 'statistic.html', context)
 
 
+def statistics(request):
+    return render(request, 'statistics.html')
+
+
 def main(request):
     return render(request, 'index.html')
+
+def answers(request):
+    return render(request, 'answers.html')
 
 
 def account(request):
