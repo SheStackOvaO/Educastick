@@ -16,20 +16,9 @@
 <img src="{% static 'images/goBack.png'%}" alt="" id="hidden_goBackImg" hidden>
 <img src="{% static 'images/plus.png'%}" alt="" id="hidden_plusImg" hidden>
 <img src="{% static 'images/delete.png'%}" alt="" id="hidden_deleteImg" hidden>
-<header>
-    <div class="logo">
-        <a href="index.html"><img src="{% static 'images/logo.png'%}" id="logo" alt=""></a>
-    </div>
-    <div class="abutt">
-        <a href="#">Статистика</a>
-        <a href="#">Группы</a>
-        <a href="#">Тесты</a>
-        <a href="#">Ответы</a>
-    </div>
-    <div class="ava">
-        <a href="index.html"><img src="{% static 'images/placeholder-man.png'%}" alt="" id="ava"></a>
-    </div>
-</header>
+
+{% include "include/header.html" %}
+
 <div class="wrapper">
     <div class="description_main">
         <h1>Тесты</h1>

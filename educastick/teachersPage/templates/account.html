@@ -12,26 +12,14 @@
   <link rel="stylesheet" href="{% static 'css/stylehome.css'%}">
 </head>
 <body>
-<header>
-  <div class="logo">
-    <a href="index.html"><img src="{% static 'images/logo.png'%}" id="logo" alt=""></a>
-  </div>
-  <div class="abutt">
-    <a href="#">Статистика</a>
-    <a href="#">Группы</a>
-    <a href="#">Тесты</a>
-    <a href="#">Ответы</a>
-  </div>
-  <div class="ava">
-    <img src="{% static 'images/placeholder-man.png'%}" alt="" id="ava">
-  </div>
-</header>
+
+{% include "include/header.html" %}
+
 <div class="wrapper">
   <div class="description_main">
     <h1>Личный кабинет</h1>
-    <p>Описание описание описание описание описание описание описание описание описание описание пива имва лоав итадвдав
-      идлавто длавт идлавт идвалодлв длваьир давлои зэрвэр.овржилвро ржпвад ьыжпрщл жпаыь ржпр ыжпдр юпбиь ыэро зыжро щваы
-      ароэы пажлы во эрдлы длрь дыавльп дл оыэадвлпр дывлр ывоо рваылр жывлдр овыьит ыдвоарт жаывшрп адывлр жыдвало
+    <p>Это Ваш личный кабинет. </p>
+    <p>В личном кабинете Вы можете видеть информацию о себе и о Ваших списках групп, редактировать их и удалять.
     </p>
   </div>
   <main>
@@ -86,4 +74,6 @@
 </div>
 
 </body>
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+        crossorigin="anonymous"></script>
 </html>

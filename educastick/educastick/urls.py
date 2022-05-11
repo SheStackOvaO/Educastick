@@ -25,7 +25,7 @@ urlpatterns = [
     path('accounts/', include('allauth.urls')),
     path('tests/', views.tests),
     path('admin/', admin.site.urls),
-    path('', views.main),
+    path('', views.main, name='main'),
     path('account/', views.account),
     path('test/', views.test),
     path('statistic/', views.calcStatistic),

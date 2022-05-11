@@ -56,6 +56,7 @@ def test(request):
 
     return render(request, 'testimg.html', context)
 
+
 def tests(request):
     return render(request, 'tests.html')
 
