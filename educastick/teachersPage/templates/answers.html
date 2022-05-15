@@ -1,14 +1,13 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Загруженные ответы</title>
-  <link rel="stylesheet" href="css/normalize.css">
-  <link rel="stylesheet" href="css/main.css">
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="header.css">
-  <link rel="stylesheet" href="stylegroups.css">
+    {% include "include/links.html" %}
+    <link rel="stylesheet" href="{% static 'css/stylegroups.css'%}">
+    <link rel="stylesheet" href="{% static 'css/stylefilter.css'%}">
 </head>
 <body>
 
@@ -32,12 +31,12 @@
 
   </div>
   <main>
-    <div class="groups">
+    <div class="elements">
 
-      <div class="group" id="active_green">
+      <div class="element" id="active_green">
         Распознано
       </div>
-      <div class="active_group">
+      <div class="active_element">
         <div class="photo_answers">
           <div class="photo_div">
             <img src="test.jpg" class="photo">
@@ -82,9 +81,7 @@
 
     </div>
   </main>
-  <footer>
-    footer
-  </footer>
+  {% include "include/footer.html" %}
 </div>
 </body>
 </html>

@@ -8,8 +8,7 @@ header {
   box-shadow: 0 0 10px -1px black;
   display: grid;
   grid-template-columns: repeat(8, 1fr);
-  grid-template-rows: 75px;
-
+  grid-template-rows: 70px;
 }
 .abutt{
   grid-column: 2 / 8;
@@ -21,9 +20,11 @@ header {
   justify-items: stretch;
 }
 .ava, .logo {
-  justify-self: center;
-  margin-top: 5px;
+  justify-self: stretch;
+  text-align: center;
+  padding-top: 7px;
 }
+
 header a {
   text-decoration: none;
   color: white;
@@ -56,9 +57,25 @@ header a {
   border-bottom-right-radius: 5px;
 }
 
+.sign_in{
+  display: block;
+}
+
+.sign_in:hover, .sign_out:hover{
+  font-weight: bold;
+}
+
 footer{
   grid-area: footer;
+  color: #ebecec;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
   background-color: #434242;
+  text-align: center;
+}
+
+footer div{
+  padding-top: 15px;
 }
 
 @media (max-width: 550px) {

@@ -10,10 +10,10 @@ from teachersPage import models
 
 
 def get_st_name(obj):
-        if obj.typeGroup.name == "Класс":
-            current_year = abs(datetime.date.today()-obj.dateAdmission).days/360
-            return (str)(math.ceil(current_year))+"-"+obj.name
-        return obj.name
+    if obj.typeGroup.name == "Класс":
+        current_year = abs(datetime.date.today() - obj.dateAdmission).days / 360
+        return (str)(math.ceil(current_year)) + "-" + obj.name
+    return obj.name
 
 
 class SubjectAdmin(admin.ModelAdmin):
@@ -35,7 +35,10 @@ class TypeGroupAdmin(admin.ModelAdmin):
 
 
 class TeacherAdmin(admin.ModelAdmin):
-    list_display = ("get_full_name", 'get_job', 'get_unbalancing', "get_subject")
+    list_display = ("get_full_name", 'get_job', 'get_unbalancing', "get_subject", "get_user")
+
+    def get_user(self, obj):
+        return obj.id
 
     def get_subject(self, obj):
         return "\n".join([p.name for p in obj.subject.all()])
@@ -77,7 +80,8 @@ class StGroupAdmin(admin.ModelAdmin):
 
 
 class StudentAdmin(admin.ModelAdmin):
-    list_display = ('get_full_name', 'get_sex', 'get_birthdate', 'get_email', 'get_fioGuardian', 'get_phone', 'get_stGroup',)
+    list_display = (
+    'get_full_name', 'get_sex', 'get_birthdate', 'get_email', 'get_fioGuardian', 'get_phone', 'get_stGroup',)
 
     def get_full_name(self, obj):
         return " ".join([obj.surname, obj.firstname, obj.patronymic])
@@ -111,7 +115,7 @@ class StudentAdmin(admin.ModelAdmin):
 
 class TestAdmin(admin.ModelAdmin):
     list_display = ('get_subject', 'get_module', 'get_topic', 'get_manyVariables', 'get_teacher',)
-    list_display_links = ('get_module', )
+    list_display_links = ('get_module',)
 
     def get_subject(self, obj):
         return obj.module.subject.name
@@ -137,8 +141,8 @@ class TestAdmin(admin.ModelAdmin):
 
 class VariantAdmin(admin.ModelAdmin):
     list_display = ('get_number', 'get_orderQuestions', 'get_test')
-    list_display_links = ('get_number', )
-    search_fields = ('get_number', )
+    list_display_links = ('get_number',)
+    search_fields = ('get_number',)
 
     def get_number(self, obj):
         return obj.number
@@ -168,7 +172,7 @@ class ModuleAdmin(admin.ModelAdmin):
 
 
 class CheckQuestion(admin.ModelAdmin):
-    list_display = ('get_checkQ', 'get_description', )
+    list_display = ('get_checkQ', 'get_description',)
 
     def get_checkQ(self, obj):
         return obj.checkQ
@@ -183,7 +187,7 @@ class CheckQuestion(admin.ModelAdmin):
 class QuestionAdmin(admin.ModelAdmin):
     list_display = ('get_number', 'get_description', 'get_photo', 'get_test', 'get_check',)
 
-    #list_display = ('get_number', 'get_description', 'get_photo', 'get_test',)
+    # list_display = ('get_number', 'get_description', 'get_photo', 'get_test',)
     list_display_links = ('get_test',)
 
     def get_number(self, obj):
@@ -229,9 +233,9 @@ class QuestionVariantAnswer(admin.ModelAdmin):
     get_number.short_description = 'Номер ответа'
 
 
-
 class AnswerAdmin(admin.ModelAdmin):
-    list_display = ('get_variant', 'get_uploadDate', 'get_studentAnswer', 'get_score', 'get_photo', 'get_student', 'get_test')
+    list_display = (
+    'get_variant', 'get_uploadDate', 'get_studentAnswer', 'get_score', 'get_photo', 'get_student', 'get_test')
     list_display_links = ('get_variant',)
 
     def get_variant(self, obj):

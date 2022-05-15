@@ -4,11 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Личный кабинет</title>
-
-  <link rel="stylesheet" href="{% static 'css/normalize.css'%}">
-  <link rel="stylesheet" href="{% static 'css/main.css'%}">
-  <link rel="stylesheet" href="{% static 'css/header.css'%}">
-  <link rel="stylesheet" href="{% static 'css/style.css'%}">
+  {% include "include/links.html" %}
   <link rel="stylesheet" href="{% static 'css/stylehome.css'%}">
 </head>
 <body>
@@ -67,9 +63,7 @@
 
   </main>
 
-  <footer>
-    footer
-  </footer>
+  {% include "include/footer.html" %}
 
 </div>
 

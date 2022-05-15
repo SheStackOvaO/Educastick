@@ -96,7 +96,7 @@ function CreateEditTestBlock(element_id){
 
 function CreateTestAnswerBlock(module = '', theme = '', element_id) {
     return $('<div class="active_element">\n' +
-        '        <button class="go_back_button"><img src="' + imgSrc + '" alt="" class="plus"></button>' +
+        '        <button class="go_back_button"><img src="' + goBackImgSrc + '" alt="" class="plus"></button>' +
         '        <form action="" name="' + element_id + '">\n' +
         '        <div class="active_text">\n' +
         '          <p>Модуль: ' + module + '</p>\n' +

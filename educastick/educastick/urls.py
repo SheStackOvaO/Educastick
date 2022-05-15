@@ -31,6 +31,7 @@ urlpatterns = [
     path('test/', views.test),
     path('statistics/', views.statistics, name='statistics'),
     path('statistic/', views.calcStatistic, name='statistic'),
+    path('testDef/', views.get_tests, name='testDef'),
     path('add/', views.TypeGroupCreateView.as_view(), name='add'),
 ]
 

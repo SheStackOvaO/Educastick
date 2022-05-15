@@ -2,10 +2,16 @@ from django.shortcuts import render
 
 from teachersPage import models
 from teachersPage import forms
-from teachersPage.dataProcessing import statistic
+from teachersPage.dataProcessing import statistic, getTests
 from django.views.generic.edit import CreateView
 
 # Create your views here.
+
+
+def get_tests(request):
+    result = getTests.grouping()
+    context = {'result': result, }
+    return render(request, 'tests.html', context)
 
 
 def calcStatistic(request):

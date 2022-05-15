@@ -27,6 +27,7 @@ class Subject(models.Model):
 
 
 class Teacher(models.Model):
+    user = models.ForeignKey('auth.User', on_delete=models.CASCADE, blank=True, null=True)
     surname = models.CharField(max_length=255)
     firstname = models.CharField(max_length=255)
     patronymic = models.CharField(max_length=255, blank=True, null=True)
@@ -88,6 +89,7 @@ class Variant(models.Model):
 
     def __str__(self):
         return str(self.number)
+
 
 class CheckQuestion(models.Model):
     checkQ = models.TextField()

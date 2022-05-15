@@ -1,7 +1,7 @@
 main{
   grid-row-gap: 2vh;
 }
-.information, img{
+.information, .account_img{
   display: inline-block;
   float: left;
 }

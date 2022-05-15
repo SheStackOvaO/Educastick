@@ -12,11 +12,15 @@
   </div>
   <div class="ava">
     {% if user.is_authenticated %}
-      <a href="{% url 'account_logout'%}">Выход
-        <img src="{% static 'images/placeholder-man.png'%}" alt="" id="ava">
+    <a href="{% url 'account'%}">
+      <img src="{% static 'images/placeholder-man.png'%}" alt="" id="ava">
+    </a>
+    <a href="{% url 'account_logout'%}" class="sign_out">
+        Выйти
       </a>
-    {% else %}
-    <a href="{% url 'account_login'%}">Вход</a>
+      {% else %}
+    <a href="{% url 'account_login'%}" class="sign_in">Войти </a>
+    <a href="{% url 'account_signup'%}" class="sign_in">Регистрация</a>
     {% endif%}
   </div>
 </header>
