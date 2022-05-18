@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="{% static 'css/stylefilter.css'%}">
 </head>
 <body>
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+        crossorigin="anonymous"></script>
 <img src="{% static 'images/goBack.png'%}" alt="" id="hidden_goBackImg" hidden>
 <img src="{% static 'images/plus.png'%}" alt="" id="hidden_plusImg" hidden>
 <img src="{% static 'images/delete.png'%}" alt="" id="hidden_deleteImg" hidden>
@@ -49,10 +51,11 @@
                 <img src="{% static 'images/plus.png'%}" alt="" class="plus">
             </div>
 
-            <div class="element" id="1">
-                <input type="text" disabled class="inner_text" value="Тест">
-                <input type="text" disabled class="inner_text" value="Русский язык">
-                <input type="text" disabled class="inner_text" value="Контрольный тест">
+            {% for test in result.items %}
+            <div class="element" id="{{ forloop.counter0 }}">
+                <input type="text" disabled class="inner_text it1" value="{{test.0}}">
+                <input type="text" disabled class="inner_text it2" value="{{test.2}}">
+                <input type="text" disabled class="inner_text it3" value="{{test.3}}">
                 <div class="crud_butts">
                     <button class="crud_but add_answer_but"><img src="{% static 'images/plus.png'%}" alt=""
                                                                  class="crud_but_img"></button>
@@ -132,7 +135,6 @@
                     </div>
                   </div>-->
 
-
             <!--<div class="active_element">
               <button class="go_back_button"><img src="{% static 'images/goBack.png'%}" alt="" class="plus"></button>
               <form action="" name="send_answer">
@@ -163,7 +165,7 @@
               </form>
             </div>-->
 
-            <div class="element" id="2">
+            <!--<div class="element" id="2">
                 <input type="text" disabled class="inner_text" value="Тест 2">
                 <input type="text" disabled class="inner_text" value="Русский язык">
                 <input type="text" disabled class="inner_text" value="Контрольный тест">
@@ -175,9 +177,9 @@
                     <button class="crud_but del_but"><img src="{% static 'images/delete.png'%}" alt=""
                                                           class="crud_but_img"></button>
                 </div>
-            </div>
+            </div>-->
 
-
+            {% endfor %}
         </div>
         {% endif %}
     </main>
@@ -186,5 +188,251 @@
 </body>
 <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
         crossorigin="anonymous"></script>
-<script src="{% static 'js/testsScript.js'%}"></script>
+<script type="text/javascript">
+                let goBackImgSrc = $('#hidden_goBackImg').attr('src')
+                let plusImgSrc = $('#hidden_plusImg').attr('src')
+                let deleteImgSrc = $('#hidden_deleteImg').attr('src')
+
+                function MakeBlockActive() {
+                    let element_id = $(this).attr('id')
+                    if ($(this).hasClass('active')) {
+                        $(this).removeClass('active')
+                        $(this).next('.active_element').detach()
+                    } else {
+                        $(this).addClass('active')
+                        $(this).after(CreateTestActiveBlock(element_id))
+                    }
+                }
+
+                function AddAnswersButton() {
+                    let element_id = $(this).parents('.element').attr('id')
+                    if ($(this).parents('.element').hasClass('active')) {
+                        $(this).parents('.element').next('.active_element').detach()
+                        $(this).parents('.element').after(CreateTestAnswerBlock('Части речи', 'Глаголы', element_id))
+                    } else {
+                        $(this).parents('.element').addClass('active')
+                        //console.log(element_id)
+                        $(this).parents('.element').after(CreateTestAnswerBlock('Части речи', 'Глаголы', element_id))
+                    }
+                }
+
+                function EditButton() {
+                    let element_id = $(this).parents('.element').attr('id')
+                    //console.log(element_id)
+                    if ($(this).parents('.element').hasClass('active')) {
+                        $(this).parents('.element').next('.active_element').detach()
+                        $(this).parents('.element').after(CreateEditTestBlock)
+                    } else {
+                        $(this).parents('.element').addClass('active')
+                        $(this).parents('.element').after(CreateEditTestBlock(element_id))
+                    }
+                }
+
+                function CreateEditTestBlock(element_id) {
+                    return $('<div class="active_element">\n' +
+                        '        <button class="go_back_button"><img src="' + goBackImgSrc + '" alt="" class="plus"></button>' +
+                        '        <form action="" name="' + element_id + '">\n' +
+                        '                <div class="active_text">\n' +
+                        '                    <p><label>Модуль:\n' +
+                        '                        <input type="text" name="moduleInput" class="input_text">\n' +
+                        '                    </label></p>\n' +
+                        '                    <p><label>Тема:\n' +
+                        '                        <input type="text" name="themeInput" class="input_text">\n' +
+                        '                    </label></p>\n' +
+                        '                    <p>Вопросы:</p>\n' +
+                        '                    <ol>\n' +
+                        '                        <li class="question_answer">\n' +
+                        '                            <p>\n' +
+                        '                                <input type="text" name="1" class="input_text">\n' +
+                        '                            </p>\n' +
+                        '                            <p>\n' +
+                        '                                <label>Правильный ответ:\n' +
+                        '                                    <input type="text" name="1_1" class="input_text">\n' +
+                        '                                </label>\n' +
+                        '                            </p>\n' +
+                        '                            <p class="variant_answer">\n' +
+                        '                                <label>Вариант ответа:\n' +
+                        '                                    <input type="text" name="1_2" class="input_text">\n' +
+                        '                                </label>\n' +
+                        '                            </p>\n' +
+                        '                        </li>\n' +
+                        '<div class="add_delete_buttons_in_question_answer_list">' +
+                        '                             <div class="new_question_answer_button"><img src="' + plusImgSrc + '" alt="" class="crud_but_img"></div>\n' +
+                        '                             <div class="delete_question_answer_button"><img src="' + deleteImgSrc + '" alt="" class="crud_but_img"></div>\n' +
+                        '</div>' +
+                        '                        <li class="question_answer">\n' +
+                        '                            <p>\n' +
+                        '                                <input type="text" name="2" class="input_text">\n' +
+                        '                            </p>\n' +
+                        '                            <p>\n' +
+                        '                                <label>Правильный ответ:\n' +
+                        '                                    <input type="text" name="2_1" class="input_text">\n' +
+                        '                                </label>\n' +
+                        '                            </p>\n' +
+                        '                        </li>\n' +
+                        '<div class="add_delete_buttons_in_question_answer_list">' +
+                        '                             <div class="new_question_answer_button"><img src="' + plusImgSrc + '" alt="" class="crud_but_img"></div>\n' +
+                        '                             <div class="delete_question_answer_button"><img src="' + deleteImgSrc + '" alt="" class="crud_but_img"></div>\n' +
+                        '</div>' +
+                        '                    </ol>\n' +
+                        '                </div>\n' +
+                        '                <div class="edit_buttons">\n' +
+                        '                    <div class="new_question_button"><img src="' + plusImgSrc + '" alt="" class="crud_but_img"></div>\n' +
+                        '                             <div class="delete_question_button"><img src="' + deleteImgSrc + '" alt="" class="crud_but_img"></div>\n' +
+                        '                    <button class="save_button">Сохранить</button>\n' +
+                        '                </div>\n' +
+                        '        </form>\n' +
+                        '            </div>')
+                }
+
+                function CreateTestAnswerBlock(module = '', theme = '', element_id) {
+                    return $('<div class="active_element">\n' +
+                        '        <button class="go_back_button"><img src="' + goBackImgSrc + '" alt="" class="plus"></button>' +
+                        '        <form action="" name="' + element_id + '">\n' +
+                        '        <div class="active_text">\n' +
+                        '          <p>Модуль: ' + module + '</p>\n' +
+                        '          <p>Тема: ' + theme + '</p>\n' +
+                        '        </div>\n' +
+                        '        <div class="select_element">\n' +
+                        '          <div class="element_add active_group_choose">\n' +
+                        '            Выбор группы\n' +
+                        '          </div>\n' +
+                        '        </div>\n' +
+                        '        <div class="active_butts">\n' +
+                        '          <input type="date" class="download_button">\n' +
+                        '          <input type="file" name="" id="" class="download_button">\n' +
+                        '          <button class="download_button" id="save_answer" type="submit">\n' +
+                        '            Сохранить ответы\n' +
+                        '          </button>\n' +
+                        '        </div>\n' +
+                        '        </form>\n' +
+                        '      </div>')
+                }
+
+                function CreateTestActiveBlock(element_id) {
+                    let module = "{{result.0.1}}"
+                    let topic = "{{result.0.2}}"
+                    return $('<div class="active_element">\n' +
+                        '  <a href="" class="statistic_href">Статистика</a>\n' +
+                        '        <div class="active_text">\n' +
+                        '          <p>Модуль: ' + module + '</p>\n' +
+                        '          <p>Тема: ' + topic + '</p>\n' +
+                        '          <p>Вопросы:</p>\n' +
+                        '                    <ol>\n' +
+                        '                        <li class="question_answer">\n' +
+                        '                            <p>\n' +
+                        '                                <input type="text" name="1" class="input_text">\n' +
+                        '                            </p>\n' +
+                        '                            <p>\n' +
+                        '                                <label>Правильный ответ:\n' +
+                        '                                    <input type="text" name="1_1" class="input_text">\n' +
+                        '                                </label>\n' +
+                        '                            </p>\n' +
+                        '                            <p class="variant_answer">\n' +
+                        '                                <label>Вариант ответа:\n' +
+                        '                                    <input type="text" name="1_2" class="input_text">\n' +
+                        '                                </label>\n' +
+                        '                            </p>\n' +
+                        '                        </li>\n' +
+                        '                        <li class="question_answer">\n' +
+                        '                            <p>\n' +
+                        '                                <input type="text" name="2" class="input_text">\n' +
+                        '                            </p>\n' +
+                        '                            <p>\n' +
+                        '                                <label>Правильный ответ:\n' +
+                        '                                    <input type="text" name="2_1" class="input_text">\n' +
+                        '                                </label>\n' +
+                        '                            </p>\n' +
+                        '                        </li>\n' +
+                        '                    </ol>\n' +
+                        '        </div>\n' +
+                        '      </div>')
+                }
+
+                function ElementSelectBlock() {
+                    return $('<div class="elements_choose">\n' +
+                        '            <input list="list_elements" class="find_element">\n' +
+                        '            <div class="close_choose" >X</div>     ' +
+                        '            <datalist id="list_elements">\n' +
+                        '            </datalist>\n' +
+                        '          </div>')
+                }
+
+
+                $(document).ready(function () {
+                    let groupsList = ['Группа 1', 'Группа 2']
+
+                    $('.element').click(MakeBlockActive)
+
+                    $('.crud_but').click(function () {
+                        event.stopPropagation()
+                    })
+
+                    $('.add_answer_but').click(AddAnswersButton)
+
+                    $('.edit_but').click(EditButton)
+
+                    $(document).on('click', '.new_question_button', function () {
+                        $(this).parent().prev('.active_text').children('ol').append($('<li  class="question_answer">\n' +
+                            '                            <p>\n' +
+                            '                                <input type="text" name="1" class="input_text">\n' +
+                            '                            </p>\n' +
+                            '                            <p>\n' +
+                            '                                <label>Правильный ответ:\n' +
+                            '                                    <input type="text" name="1_1" class="input_text">\n' +
+                            '                                </label>\n' +
+                            '                            </p>\n' +
+                            '                        </li>' +
+                            '<div class="add_delete_buttons_in_question_answer_list">' +
+                            '                             <div class="new_question_answer_button"><img src="' + plusImgSrc + '" alt="" class="crud_but_img"></div>\n' +
+                            '                             <div class="delete_question_answer_button"><img src="' + deleteImgSrc + '" alt="" class="crud_but_img"></div>\n' +
+                            '</div>'))
+                    })
+
+                    $(document).on('click', '.delete_question_button', function () {
+                        $(this).parent().prev('.active_text').children('ol').children('.question_answer:last').remove()
+                        $(this).parent().prev('.active_text').children('ol').children('.add_delete_buttons_in_question_answer_list:last').remove()
+                    })
+
+                    $(document).on('click', '.new_question_answer_button', function () {
+                        $(this).parent().prev('.question_answer').append($('<p class="variant_answer">\n' +
+                            '                                <label>Вариант ответа:\n' +
+                            '                                    <input type="text" name="1_2" class="input_text">\n' +
+                            '                                </label>\n' +
+                            '                            </p>'))
+                    })
+
+
+                    $(document).on('click', '.delete_question_answer_button', function () {
+                        $(this).parent().prev('.question_answer').children('.variant_answer:last').remove()
+                    })
+
+                    $(document).on('click', '.active_group_choose', function () {
+                        $(this).after(ElementSelectBlock())
+                        let datalist = document.querySelector('#list_elements')
+                        let datalist2 = $(this).siblings().children('#list_elements')
+                        console.log(datalist2)
+                        for (let i = 0; i < groupsList.length; i++) {
+                            let opt = groupsList[i]
+                            let el = document.createElement("option")
+                            el.value = opt
+                            datalist.appendChild(el)
+                        }
+                    })
+
+                    $(document).on('click', '.close_choose', function () {
+                        $(this).parent().remove()
+                    })
+
+                    $(document).on('click', '.go_back_button', function () {
+                        let parentElement = $(this).parents('.active_element').prev()
+                        $(this).parents('.active_element').detach()
+                        parentElement.after(CreateTestActiveBlock('Части речи', 'Глаголы'))
+                    })
+
+
+                })
+
+            </script>
+<!--<script src="{% static 'js/testsScript.js'%}"></script>-->
 </html>

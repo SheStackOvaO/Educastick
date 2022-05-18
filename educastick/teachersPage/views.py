@@ -11,7 +11,7 @@ from django.views.generic.edit import CreateView
 def get_tests(request):
     result = getTests.grouping()
     context = {'result': result, }
-    return render(request, 'tests.html', context)
+    return render(request, 'testDef.html', context)
 
 
 def calcStatistic(request):
@@ -71,5 +71,7 @@ def test(request):
 
 
 def tests(request):
-    return render(request, 'tests.html')
+    result = getTests.grouping()
+    context = {'result': result, }
+    return render(request, 'tests.html', context)
 
